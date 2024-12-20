@@ -25,8 +25,24 @@
     // 🧠 The person also has an `ageGracefully` method, which increases `age` by 1 each time it's called.
     // 🧠 But there's a catch: once `age` reaches 12, the `ageGracefully` method will have no effect.
     class PeterPan {
-
+    constructor(desiredName){
+   this.name = desiredName;
+   this.age = 0;
     }
+    ageGracefully(){
+    this.age++;
+    if(this.age > 12){
+      return this.age =12
+    }
+  }
+}
+
+  let person1 = new PeterPan();
+  person1.ageGracefully();
+  console.log(person1); 
+
+
+
 
     // 👉 CHALLENGE 2
     // 🧠 Build an AirPlane class. This class allows to instantiate airplanes.
@@ -38,7 +54,23 @@
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
     class AirPlane {
-
+    constructor(desiredModel){
+    this.model = desiredModel;
+    this.altitude = 0;
+    }
+    up(meters){
+      return this.altitude+= meters;  
+    }
+    down(meters){
+      this.altitude -= meters;  
+      if(this.altitude <0){
+        this.altitude = 0; 
+        return "CRASH!"
+      }
+      else{
+        return this.altitude;
+      }
+    }
     }
 
     // 👉 CHALLENGE 3
@@ -48,8 +80,28 @@
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
-
+    constructor(){
+    this.isOn = false;
     }
+turnOn(){
+  this.isOn = true;
+return "You turned the bulb ON";
+}
+
+turnOff(){
+  this.isOn = false;
+return "You turned the bulb OFF"
+}
+toggle(){
+  if(this.isOn){
+    return this.turnOff()
+  }
+  else{
+   return this.turnOn()
+  }
+}
+}
+  
 
     // 👉 CHALLENGE 4
     // 🧠 Build a CountDown class that can count down starting at any number we pass to the constructor.
@@ -58,7 +110,8 @@
     // 🧠 After liftoff, `count` returns null instead of a string.
     // 🧠 It's up to you to decide what property (or properties) are needed.
     // Example of use:
-    //   let minusThree = new CountDown(3) // we could pass any number
+    // we could pass any number
+    // let minusThree = new CountDown(3);
     //   minusThree.count() // returns "3!"
     //   minusThree.count() // returns "2!"
     //   minusThree.count() // returns "1!"
@@ -66,8 +119,25 @@
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
-
+     constructor(num){
+    this.currentNumber = num;
+     }
+     count(){
+      if(this.currentNumber>=1){
+        return `${this.currentNumber--}!`
+      }
+      else if(this.currentNumber===0){
+        this.currentNumber--;
+        return "Liftoff!"
+      }
+      else{
+        return null;
+      }
+     }
     }
+   
+
+
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
